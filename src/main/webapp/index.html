@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <form action="json" method="get">
+        <h1>Hola a todos!</h1>        
+        <button type="submit" name="enviar" value="Enviar" id="crear" class="btn btn-success">Enviar</button>
+
+        <div id="hola"></div>
+        </form>
+        </div>
+<!--        <script>
+            $(document).ready(function () {                
+                $("#crear").click(function () {                
+                        $.ajax({
+                        url: "/request/json",
+                                cache: false,
+                                method: "POST",
+                                dataType: "json",
+                                success: function (data) {
+                                $("#hola").empty().append("Funciona");
+                                },                                
+                                error: function (error) {
+                                $("#hola").empty().append("no");                                     
+                                }
+                                
+                        });
+                });
+            });
+        </script>-->
+    </body>      
+</html>
