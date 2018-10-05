@@ -8,6 +8,7 @@ package net.daw.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,10 +37,27 @@ public class json extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet json</title>");            
+            out.println("<title>Servlet json</title>"); 
+            out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\"\n" +
+"              crossorigin=\"anonymous\">");
             out.println("</head>");
+            out.println("<style>");
+            out.println("</style>");            
             out.println("<body>");
-            out.println("<h3><u>Request Parámetros</u></h3>");
+            out.println("<div class='container'>");    
+            
+            out.println("<table class=\"table table-bordered\">");   
+            out.println("<h3><u>Tabla de parámetros</u></h3>");            
+            Map parMap = request.getParameterMap();
+            for (Object key : parMap.keySet()) {
+                String clave =(String) key;
+                String [] valor = (String[]) parMap.get(clave);
+                out.println("<tr><td> Parámetro: " + (String) key +  "</td><td> valor: " + Arrays.toString(valor) + "</td></tr>");
+            }
+            
+            out.println("</table>");      
+            
+            out.println("<h3><u>Request Parámetros</u></h3>");            
             out.println("<h4> getContextPath():</h4>" + request.getContextPath());            
             out.println("<h4> getCookies(): </h4>" + Arrays.toString(request.getCookies()));                                          
             out.println("<h4> getMethod(): </h4>" + request.getMethod() + "</h4>");
@@ -71,7 +89,8 @@ public class json extends HttpServlet {
             out.println("<h4> getPathInfo():</h4>" + request.getPathInfo() + "</h4>");
             out.println("<h4> authenticate():</h4>" + request.authenticate(response) + "</h4>");
             out.println("<h4> getUserPrincipal():</h4>" + request.getUserPrincipal() + "</h4>");
-            out.println("<h4> request:</h4>" + request + "</h4>");           
+            out.println("<h4> request:</h4>" + request + "</h4>");  
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
